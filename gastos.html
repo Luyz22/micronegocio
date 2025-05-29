@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastos y Finanzas | MicroGestión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo">Micro<span>Gestión</span></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#home">Inicio</a>
+            <a href="index.html#features">Funcionalidades</a>
+            <a href="index.html#register">Registro</a>
+            <a href="index.html#contact">Contacto</a>
+        </nav>
+        <div class="header-buttons">
+            <a href="#" class="btn btn-outline" id="open-login-modal">Iniciar Sesión</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido específico -->
+    <main class="page-content">
+        <section class="page-section">
+            <div class="section-title">
+                <h1>Gastos y Finanzas</h1>
+                <p>Controla tus ingresos y egresos de manera eficiente</p>
+            </div>
+            
+            <div class="container">
+                <div class="info-box">
+                    <h2>Registro de Movimientos</h2>
+                    <form class="expense-form">
+                        <div class="form-group">
+                            <label for="movement-type">Tipo de Movimiento</label>
+                            <select id="movement-type" required>
+                                <option value="">Seleccionar tipo</option>
+                                <option value="ingreso">Ingreso</option>
+                                <option value="gasto">Gasto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="movement-date">Fecha</label>
+                            <input type="date" id="movement-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="movement-amount">Monto</label>
+                            <input type="number" step="0.01" id="movement-amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="movement-category">Categoría</label>
+                            <select id="movement-category" required>
+                                <option value="">Seleccionar categoría</option>
+                                <option value="ventas">Ventas</option>
+                                <option value="servicios">Servicios Públicos</option>
+                                <option value="nomina">Nómina</option>
+                                <option value="alquiler">Alquiler</option>
+                                <option value="inversion">Inversión</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="movement-description">Descripción</label>
+                            <textarea id="movement-description" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrar Movimiento</button>
+                    </form>
+                </div>
+
+                <div class="info-box" style="margin-top: 30px;">
+                    <h2>Resumen Financiero</h2>
+                    <div class="financial-summary">
+                        <div class="summary-card">
+                            <h3>Ingresos</h3>
+                            <p class="amount income">$5,250,000</p>
+                            <p class="period">Este mes</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Gastos</h3>
+                            <p class="amount expense">$3,750,000</p>
+                            <p class="period">Este mes</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Balance</h3>
+                            <p class="amount balance">$1,500,000</p>
+                            <p class="period">Este mes</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 30px;">Últimos Movimientos</h3>
+                    <table class="expense-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Descripción</th>
+                                <th>Categoría</th>
+                                <th>Tipo</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>15/05/2023</td>
+                                <td>Venta de productos</td>
+                                <td>Ventas</td>
+                                <td class="type-income">Ingreso</td>
+                                <td class="amount income">$1,250,000</td>
+                            </tr>
+                            <tr>
+                                <td>14/05/2023</td>
+                                <td>Pago de energía</td>
+                                <td>Servicios</td>
+                                <td class="type-expense">Gasto</td>
+                                <td class="amount expense">$350,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <a href="index.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>MicroGestión</h3>
+                <p>El software de gestión diseñado específicamente para las necesidades de las microempresas en Cali y toda Colombia.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#home">Inicio</a></li>
+                    <li><a href="index.html#features">Funcionalidades</a></li>
+                    <li><a href="index.html#register">Registro</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                    <li><a href="#">Precios</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Cali, Colombia</li>
+                    <li><i class="fas fa-phone"></i> +57 320 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@microgestion.com</li>
+                    <li><i class="fas fa-clock"></i> Lunes a Viernes: 8am - 6pm</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 MicroGestión. Todos los derechos reservados. | Versión 2.5.1</p>
+        </div>
+    </footer>
+    
+    <!-- Modal de Inicio de Sesión -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Iniciar Sesión</h3>
+            <form id="login-form-modal">
+                <div class="form-group">
+                    <label for="login-email-modal">Correo Electrónico</label>
+                    <input type="email" id="login-email-modal" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password-modal">Contraseña</label>
+                    <input type="password" id="login-password-modal" required>
+                </div>
+                
+                <div class="form-group">
+                    <a href="#" style="color: var(--accent-color); text-decoration: none; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+            
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <p>¿No tienes una cuenta? <a href="index.html#register" style="color: var(--accent-color); text-decoration: none;">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

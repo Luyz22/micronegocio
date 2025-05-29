@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes y Análisis | MicroGestión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html" class="logo">Micro<span>Gestión</span></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#home">Inicio</a>
+            <a href="index.html#features">Funcionalidades</a>
+            <a href="index.html#register">Registro</a>
+            <a href="index.html#contact">Contacto</a>
+        </nav>
+        <div class="header-buttons">
+            <a href="#" class="btn btn-outline" id="open-login-modal">Iniciar Sesión</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido específico -->
+    <main class="page-content">
+        <section class="page-section">
+            <div class="section-title">
+                <h1>Reportes y Análisis</h1>
+                <p>Genera informes detallados para tomar mejores decisiones</p>
+            </div>
+            
+            <div class="container">
+                <div class="report-filters">
+                    <h2>Filtros del Reporte</h2>
+                    <form class="filter-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="report-type">Tipo de Reporte</label>
+                                <select id="report-type" required>
+                                    <option value="">Seleccionar tipo</option>
+                                    <option value="ventas">Ventas</option>
+                                    <option value="inventario">Inventario</option>
+                                    <option value="gastos">Gastos</option>
+                                    <option value="utilidad">Utilidad</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="time-period">Período</label>
+                                <select id="time-period" required>
+                                    <option value="hoy">Hoy</option>
+                                    <option value="semana">Esta semana</option>
+                                    <option value="mes" selected>Este mes</option>
+                                    <option value="trimestre">Este trimestre</option>
+                                    <option value="anio">Este año</option>
+                                    <option value="personalizado">Personalizado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row" id="custom-dates" style="display: none;">
+                            <div class="form-group">
+                                <label for="start-date">Fecha Inicio</label>
+                                <input type="date" id="start-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="end-date">Fecha Fin</label>
+                                <input type="date" id="end-date">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                    </form>
+                </div>
+
+                <div class="info-box" style="margin-top: 30px;">
+                    <h2>Reporte de Ventas - Mayo 2023</h2>
+                    <div class="report-summary">
+                        <div class="summary-card">
+                            <h3>Ventas Totales</h3>
+                            <p class="amount">$12,450,000</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Productos Vendidos</h3>
+                            <p class="amount">1,245 unidades</p>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Venta Promedio</h3>
+                            <p class="amount">$45,000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Ventas por Día</h3>
+                        <div class="chart-placeholder" style="height: 300px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+                            <p>Gráfico de ventas diarias se mostraría aquí</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container" style="margin-top: 30px;">
+                        <h3>Ventas por Categoría</h3>
+                        <div class="chart-placeholder" style="height: 300px; background: #f5f5f5; display: flex; align-items: center; justify-content: center;">
+                            <p>Gráfico de ventas por categoría se mostraría aquí</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 30px;">Detalle de Ventas</h3>
+                    <table class="report-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>15/05/2023</td>
+                                <td>Arroz 1kg</td>
+                                <td>25</td>
+                                <td>$2,500</td>
+                                <td>$62,500</td>
+                            </tr>
+                            <tr>
+                                <td>15/05/2023</td>
+                                <td>Leche 1L</td>
+                                <td>18</td>
+                                <td>$3,200</td>
+                                <td>$57,600</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="report-actions" style="margin-top: 20px;">
+                        <button class="btn btn-outline"><i class="fas fa-file-pdf"></i> Exportar a PDF</button>
+                        <button class="btn btn-outline"><i class="fas fa-file-excel"></i> Exportar a Excel</button>
+                        <button class="btn btn-outline"><i class="fas fa-print"></i> Imprimir Reporte</button>
+                    </div>
+                </div>
+                
+                <a href="index.html" class="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>MicroGestión</h3>
+                <p>El software de gestión diseñado específicamente para las necesidades de las microempresas en Cali y toda Colombia.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#home">Inicio</a></li>
+                    <li><a href="index.html#features">Funcionalidades</a></li>
+                    <li><a href="index.html#register">Registro</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                    <li><a href="#">Precios</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Cali, Colombia</li>
+                    <li><i class="fas fa-phone"></i> +57 320 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@microgestion.com</li>
+                    <li><i class="fas fa-clock"></i> Lunes a Viernes: 8am - 6pm</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 MicroGestión. Todos los derechos reservados. | Versión 2.5.1</p>
+        </div>
+    </footer>
+    
+    <!-- Modal de Inicio de Sesión -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Iniciar Sesión</h3>
+            <form id="login-form-modal">
+                <div class="form-group">
+                    <label for="login-email-modal">Correo Electrónico</label>
+                    <input type="email" id="login-email-modal" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password-modal">Contraseña</label>
+                    <input type="password" id="login-password-modal" required>
+                </div>
+                
+                <div class="form-group">
+                    <a href="#" style="color: var(--accent-color); text-decoration: none; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+            
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <p>¿No tienes una cuenta? <a href="index.html#register" style="color: var(--accent-color); text-decoration: none;">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Mostrar/ocultar fechas personalizadas
+        document.getElementById('time-period').addEventListener('change', function() {
+            const customDates = document.getElementById('custom-dates');
+            if (this.value === 'personalizado') {
+                customDates.style.display = 'flex';
+            } else {
+                customDates.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
