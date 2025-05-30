@@ -22,7 +22,7 @@ if ($data && $data['action'] === 'registrar') {
     }
 
     $stmt = $conn->prepare("INSERT INTO usuarios (nombre_completo, email, password_hash, telefono) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $name, $email, $business, $phone, $password);
+    $stmt->bind_param("sssss", $name, $email, $password, $phone);
 
     if ($stmt->execute()) {
         echo json_encode(['success' => true]);
@@ -35,10 +35,5 @@ if ($data && $data['action'] === 'registrar') {
 } else {
     echo json_encode(['success' => false, 'message' => 'Solicitud inválida']);
 }
-
-
-
-
-
 
 ?>
