@@ -117,46 +117,184 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 function registrarUsuario() {
-    const form = document.getElementById('register-form');
+    // Limpiar mensajes anteriores
+    document.getElementById('email-feedback').textContent = '';
+    document.getElementById('correo_electronico').classList.remove('input-error');
+    
+    const datos = {
+        nombre_completo: document.getElementById('nombre_completo').value,
+        correo_electronico: document.getElementById('correo_electronico').value,
+        contrasena: document.getElementById('contrasena').value,
+        nombre_negocio: document.getElementById('nombre_negocio').value,
+        telefono: document.getElementById('telefono').value
+    };
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const business = document.getElementById('business').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-
-    if (password !== confirmPassword) {
-        alert('Las contraseñas no coinciden');
+    // Validación de contraseña
+    if (!validarContrasenas()) {
         return;
     }
 
-    fetch('/controlador/usuario.php', {
+    fetch('../controlador/usuarios.php?accion=registrar', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            action: 'registrar',
-            name,
-            email,
-            business,
-            phone,
-            password
-        })
+        body: JSON.stringify(datos)
     })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            alert('¡Usuario registrado con éxito!');
-            form.reset();
-        } else {
-            alert('Error: ' + result.message);
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw err; });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            mostrarMensajeExito('Registro exitoso. Redirigiendo...');
+            setTimeout(() => {
+                window.location.href = 'panel.html';
+            }, 2000);
         }
     })
     .catch(error => {
-        console.error('Error al enviar datos:', error);
-        alert('Error en la conexión con el servidor');
+        console.error('Error:', error);
+        manejarErrorRegistro(error);
     });
 }
 
+function manejarErrorRegistro(error) {
+    const emailField = document.getElementById('correo_electronico');
+    const feedbackElement = document.getElementById('email-feedback');
+    
+    if (error.error === 'El correo electrónico ya está registrado') {
+        // Estilizar el campo de email
+        emailField.classList.add('input-error');
+        
+        // Mostrar mensaje con opciones
+        feedbackElement.innerHTML = `
+            <div class="alert alert-warning">
+                ${error.error}. 
+                <a href="#" onclick="mostrarLogin()">Iniciar sesión</a> o 
+                <a href="/sistema_gestion/recuperar-contrasena.html">Recuperar contraseña</a>
+            </div>
+        `;
+        
+        // Enfocar el campo problemático
+        emailField.focus();
+    } else {
+        mostrarMensajeError(error.error || 'Error en el registro');
+    }
+}
+
+function mostrarLogin() {
+    document.getElementById('login-modal').style.display = 'block';
+    document.getElementById('email-feedback').textContent = '';
+    document.getElementById('correo_electronico').value = '';
+    document.getElementById('correo_electronico').classList.remove('input-error');
+}
+
+// Función para validar contraseñas
+function validarContrasenas() {
+    const contrasena = document.getElementById('contrasena').value;
+    const confirmacion = document.getElementById('confirmar_contrasena').value;
+    const errorElement = document.getElementById('password-error');
+    
+    if (contrasena !== confirmacion && confirmacion.length > 0) {
+        errorElement.style.display = 'inline';
+        return false;
+    } else {
+        errorElement.style.display = 'none';
+        return true;
+    }
+}
+
+// Event listeners para validación en tiempo real
+document.getElementById('confirmar_contrasena').addEventListener('input', validarContrasenas);
+document.getElementById('contrasena').addEventListener('input', validarContrasenas);
+
+// Función principal de registro
+function registrarUsuario() {
+    // Limpiar errores anteriores
+    document.querySelectorAll('.error-message').forEach(el => {
+        el.textContent = '';
+        el.style.display = 'none';
+    });
+
+    const datos = {
+         nombre_completo: document.getElementById('nombre_completo').value,
+        correo_electronico: document.getElementById('correo_registro').value, // Cambiado
+        contrasena: document.getElementById('contrasena').value,
+        nombre_negocio: document.getElementById('nombre_negocio').value,
+        telefono: document.getElementById('telefono').value
+    };
+
+    // Validación básica en cliente
+    if (!validarContrasenas()) {
+        return;
+    }
+
+    fetch('/sistema_gestion/controlador/usuarios.php?accion=registrar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(async response => {
+        const data = await response.json();
+        
+        if (!response.ok) {
+            // Crear un error personalizado con toda la información
+            const error = new Error(data.error || 'Error desconocido');
+            error.response = data;
+            error.status = response.status;
+            throw error;
+        }
+        return data;
+    })
+    .then(data => {
+        if (data.success) {
+            mostrarMensajeExito('¡Registro exitoso! Redirigiendo...');
+            setTimeout(() => {
+                window.location.href = 'panel.html';
+            }, 1500);
+        }
+    })
+    .catch(error => {
+        console.error('Error completo:', error);
+        
+        // Mostrar mensaje de error detallado
+        const errorMessage = error.response?.error || 
+                            error.message || 
+                            'Error al conectar con el servidor';
+        
+        mostrarMensajeError(errorMessage, error.response?.type);
+        
+        // Manejar casos específicos
+        if (error.response?.code === '23000') { // Error de duplicado en SQL
+            document.getElementById('correo_electronico').classList.add('input-error');
+            document.getElementById('email-feedback').innerHTML = `
+                Este correo ya está registrado. 
+                <a href="/sistema_gestion/recuperar-contrasena.html?email=${encodeURIComponent(datos.correo_electronico)}">
+                    ¿Olvidaste tu contraseña?
+                </a>
+            `;
+        }
+    });
+}
+
+function mostrarMensajeError(mensaje, tipoError) {
+    const errorContainer = document.getElementById('error-container');
+    if (!errorContainer) {
+        // Crear contenedor si no existe
+        const div = document.createElement('div');
+        div.id = 'error-container';
+        div.className = 'error-container';
+        document.querySelector('form').prepend(div);
+    }
+    
+    document.getElementById('error-container').innerHTML = `
+        <div class="alert alert-danger ${tipoError || ''}">
+            <strong>Error:</strong> ${mensaje}
+        </div>
+    `;
+}
