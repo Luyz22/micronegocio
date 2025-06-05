@@ -1,354 +1,374 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micro-Gestión - Software para Microempresas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="logo-container">
-            <a href="#" class="logo">Micro<span>Gestión</span></a>
-        </div>
+<html ng-app="myApp" lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Micro-Gestión - Software para Microempresas</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+
+    <body ng-controller="indexControlador">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <a href="#" class="logo">Micro<span>Gestión</span></a>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#home" class="active">Inicio</a>
+                <a href="#features">Funcionalidades</a>
+                <a href="#register">Registro</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+            
+            <div class="header-buttons">
+                <button ng-click="abrirModalLogin()" class="btn btn-outline" id="open-login-modal">Iniciar Sesión</button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
         
-        <nav class="nav-links">
-            <a href="#home" class="active">Inicio</a>
-            <a href="#features">Funcionalidades</a>
-            <a href="#register">Registro</a>
-            <a href="#contact">Contacto</a>
-        </nav>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Software de gestión para microempresas en Cali</h1>
+                <p>La solución todo en uno para administrar tu negocio de manera eficiente. Control de inventario, gastos, facturación y más en una sola plataforma.</p>
         
-        <div class="header-buttons">
-            <a href="#" class="btn btn-outline" id="open-login-modal">Iniciar Sesión</a>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-    
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Software de gestión para microempresas en Cali</h1>
-            <p>La solución todo en uno para administrar tu negocio de manera eficiente. Control de inventario, gastos, facturación y más en una sola plataforma.</p>
-    
-        </div>
-    </section>
-    
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="section-title">
-            <h2>Nuestras Funcionalidades</h2>
-            <p>Descubre todo lo que MicroGestión puede hacer por tu negocio</p>
-        </div>
+            </div>
+        </section>
         
-        <div class="features-grid">
-            <!-- Tarjeta 1: Inventario -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-boxes"></i>
-                </div>
-                <h3>Control de Inventario</h3>
-                <p>Gestiona tus productos, stock y alertas de reposición.</p>
-                <a href="inventario.html" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Ver más</a>
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="section-title">
+                <h2>Nuestras Funcionalidades</h2>
+                <p>Descubre todo lo que MicroGestión puede hacer por tu negocio</p>
             </div>
             
-            <!-- Tarjeta 2: Gastos -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                </div>
-                <h3>Gastos y Finanzas</h3>
-                <p>Registra y categoriza todos tus gastos e ingresos.</p>
-                <a href="gastos.html" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Ver más</a>
-            </div>
-            
-            <!-- Tarjeta 3: Reportes -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Reportes y Análisis</h3>
-                <p>Genera reportes detallados.</p>
-                <a href="reportes.html" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Ver más</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="section-title">
-            <h2>MicroGestión en Números</h2>
-            <p>Únete a las decenas de microempresas en Cali que ya optimizaron sus procesos con nosotros</p>
-        </div>
-        
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>50+</h3>
-                <p>Clientes Satisfechos</p>
-            </div>
-            
-            <div class="stat-item">
-                <h3>24/7</h3>
-                <p>Soporte Disponible</p>
-            </div>
-            
-            <div class="stat-item">
-                <h3>99%</h3>
-                <p>Tiempo Activo</p>
-            </div>
-            
-            <div class="stat-item">
-                <h3>5</h3>
-                <p>Años de Experiencia</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Forms Section -->
-    <section class="forms-section" id="register">
-        <div class="section-title">
-            <h2>Regístrate o Inicia Sesión</h2>
-            <p>Comienza a gestionar tu negocio de manera profesional hoy mismo</p>
-        </div>
-        
-        <div class="forms-container">
-            <!-- Registration Form -->
-            <div class="form-card">
-                <h3>Crear Cuenta</h3>
-                <form id="register-form" onsubmit="return false;">
-                    <div id="error-container"></div>
-                    
-                    <div class="form-group">
-                        <label for="nombre_completo">Nombre Completo</label>
-                        <input type="text" id="nombre_completo" name="nombre_completo" required>
+            <div class="features-grid">
+                <!-- Tarjeta 1: Inventario -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-boxes"></i>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="correo_registro">Correo Electrónico</label>
-                        <input type="email" id="correo_registro" name="correo_electronico" required>
-                        <div id="email-feedback" class="feedback-message"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="nombre_negocio">Nombre del Negocio</label>
-                        <input type="text" id="nombre_negocio" name="nombre_negocio" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contrasena">Contraseña (mínimo 8 caracteres)</label>
-                        <input type="password" id="contrasena" name="contrasena" required minlength="8">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmar_contrasena">Confirmar Contraseña</label>
-                        <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required>
-                        <span id="password-error" class="error-message" style="display:none;">Las contraseñas no coinciden</span>
-                    </div>
-                    
-                    <button type="button" class="btn btn-primary btn-block" onclick="registrarUsuario()">Registrarse</button>
-                </form>
-            </div>
-            
-            <!-- Login Form -->
-            <div class="form-card">
-                <h3>Iniciar Sesión</h3>
-                <form id="login-form-section">
-                    <div class="form-group">
-                        <label for="correo_login">Correo Electrónico</label>
-                        <input type="email" id="correo_login" name="correo_electronico" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="login-password-section">Contraseña</label>
-                        <input type="password" id="login-password-section" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <a href="#" style="color: var(--accent-color); text-decoration: none;">¿Olvidaste tu contraseña?</a>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
-                </form>
-                
-                <div style="margin-top: 1.5rem; text-align: center;">
-                    <p>¿No tienes una cuenta? <a href="#register" style="color: var(--accent-color); text-decoration: none;">Regístrate aquí</a></p>
-                </div>
-            </div>
-            
-            <!-- Contact Form -->
-            <div class="form-card" id="contact">
-                <h3>Contáctanos</h3>
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="contact-name">Nombre</label>
-                        <input type="text" id="contact-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contact-email">Correo Electrónico</label>
-                        <input type="email" id="contact-email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contact-subject">Asunto</label>
-                        <input type="text" id="contact-subject" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contact-message">Mensaje</label>
-                        <textarea id="contact-message" rows="4" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="section-title">
-            <h2>Lo que dicen nuestros clientes</h2>
-            <p>Testimonios de microempresarios como tú que ya usan MicroGestión</p>
-        </div>
-        
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <p>MicroGestión ha transformado la forma en que manejo mi tienda. Ahora tengo control total sobre mi inventario y finanzas en un solo lugar.</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <!-- Imagen de perfil -->
-                    </div>
-                    <div class="author-info">
-                        <h4>Carlos Mendoza</h4>
-                        <p>Dueño de Tienda de Abarrotes</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <p>La mejor inversión que he hecho para mi negocio. El soporte es excelente y la plataforma es muy fácil de usar.</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <!-- Imagen de perfil -->
-                    </div>
-                    <div class="author-info">
-                        <h4>María Fernanda López</h4>
-                        <p>Dueña de Boutique</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <p>Desde que implementamos MicroGestión, hemos ahorrado horas de trabajo manual y reducido nuestros errores en un 90%.</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <!-- Imagen de perfil -->
-                    </div>
-                    <div class="author-info">
-                        <h4>Andrés Ramírez</h4>
-                        <p>Gerente de Distribuidora</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-column">
-                <h3>MicroGestión</h3>
-                <p>El software de gestión diseñado específicamente para las necesidades de las microempresas en Cali y toda Colombia.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Enlaces Rápidos</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#features">Funcionalidades</a></li>
-                    <li><a href="#register">Registro</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                    <li><a href="#">Precios</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Legal</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Política de Cookies</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Contacto</h3>
-                <ul class="footer-links">
-                    <li><i class="fas fa-map-marker-alt"></i> Cali, Colombia</li>
-                    <li><i class="fas fa-phone"></i> +57 320 123 4567</li>
-                    <li><i class="fas fa-envelope"></i> info@microgestion.com</li>
-                    <li><i class="fas fa-clock"></i> Lunes a Viernes: 8am - 6pm</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 MicroGestión. Todos los derechos reservados. | Versión 2.5.1</p>
-        </div>
-    </footer>
-    
-    <!-- Modal de Inicio de Sesión -->
-    <div class="modal" id="login-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Iniciar Sesión</h3>
-            <form id="login-form-modal">
-                <div class="form-group">
-                    <label for="login-email-modal">Correo Electrónico</label>
-                    <input type="email" id="login-email-modal" required>
+                    <h3>Control de Inventario</h3>
+                    <p>Gestiona tus productos, stock y alertas de reposición.</p>
+                    <!-- <a href="inventario.html" class="btn" style="margin-top: 1rem; display: inline-block;">Ver más</a> -->
                 </div>
                 
-                <div class="form-group">
-                    <label for="login-password-modal">Contraseña</label>
-                    <input type="password" id="login-password-modal" required>
+                <!-- Tarjeta 2: Gastos -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Gastos y Finanzas</h3>
+                    <p>Registra y categoriza todos tus gastos e ingresos.</p>
+                    <!-- <a href="gastos.html" class="btn" style="margin-top: 1rem; display: inline-block;">Ver más</a> -->
                 </div>
                 
-                <div class="form-group">
-                    <a href="#" style="color: var(--accent-color); text-decoration: none; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                <!-- Tarjeta 3: Reportes -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Reportes y Análisis</h3>
+                    <p>Genera reportes detallados.</p>
+                    <!-- <a href="reportes.html" class="btn" style="margin-top: 1rem; display: inline-block;">Ver más</a> -->
                 </div>
-                
-                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
-            </form>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="section-title">
+                <h2 style="color: white;">MicroGestión en Números</h2>
+                <p>Únete a las decenas de microempresas en Cali que ya optimizaron sus procesos con nosotros</p>
+            </div>
             
-            <div style="margin-top: 1.5rem; text-align: center;">
-                <p>¿No tienes una cuenta? <a href="#register" style="color: var(--accent-color); text-decoration: none;">Regístrate aquí</a></p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Clientes Satisfechos</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Soporte Disponible</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3>99%</h3>
+                    <p>Tiempo Activo</p>
+                </div>
+                
+                <div class="stat-item">
+                    <h3>5</h3>
+                    <p>Años de Experiencia</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Forms Section -->
+        <section class="forms-section" id="register">
+            <div class="section-title">
+                <h2>Regístrate o Inicia Sesión</h2>
+                <p>Comienza a gestionar tu negocio de manera profesional hoy mismo</p>
+            </div>
+            
+            <div class="forms-container">
+                <!-- Registration Form -->
+                <div class="form-card">
+                    <h3>Crear Cuenta</h3>
+                    <form id="register-form">
+                        <div id="error-container"></div>
+                        
+                        <div class="form-group">
+                            <label for="nombre_completo">Nombre Completo</label>
+                            <input ng-model="nombre_completo" type="text" id="nombre_completo" name="nombre_completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="correo_registro">Correo Electrónico</label>
+                            <input ng-model="correo" type="email" id="correo_registro" name="correo_electronico" required>
+                            <div id="email-feedback" class="feedback-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nombre_negocio">Nombre del Negocio</label>
+                            <input ng-model="nombre_negocio" type="text" id="nombre_negocio" name="nombre_negocio" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input ng-model="telefono" type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contrasena">Contraseña</label>
+                            <input ng-model="password" type="password" id="contrasena" name="contrasena">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmar_contrasena">Confirmar Contraseña</label>
+                            <input ng-model="password_true" type="password" id="confirmar_contrasena" name="confirmar_contrasena" required>
+                            <span id="password-error" class="error-message" style="display:none;">Las contraseñas no coinciden</span>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary btn-block" ng-click="crearUsuario()" >Registrarse</button>
+                    </form>
+                </div>
+                
+                <!-- Login Form -->
+                <div class="form-card">
+                    <h3>Iniciar Sesión</h3>
+                    <form id="login-form-section">
+                        <div class="form-group">
+                            <label for="correo_login">Correo Electrónico</label>
+                            <input type="email" id="correo_login" name="correo_electronico" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password-section">Contraseña</label>
+                            <input type="password" id="login-password-section" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <a href="#" style="color: var(--accent-color); text-decoration: none;">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary btn-block">Ingresar</button>
+                    </form>
+                    
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <p>¿No tienes una cuenta? <a href="#register" style="color: var(--accent-color); text-decoration: none;">Regístrate aquí</a></p>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="form-card" id="contact">
+                    <h3>Contáctanos</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Nombre</label>
+                            <input type="text" id="contact-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-email">Correo Electrónico</label>
+                            <input type="email" id="contact-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-subject">Asunto</label>
+                            <input type="text" id="contact-subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-message">Mensaje</label>
+                            <textarea id="contact-message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="section-title">
+                <h2>Lo que dicen nuestros clientes</h2>
+                <p>Testimonios de microempresarios como tú que ya usan MicroGestión</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>MicroGestión ha transformado la forma en que manejo mi tienda. Ahora tengo control total sobre mi inventario y finanzas en un solo lugar.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <!-- Imagen de perfil -->
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Dueño de Tienda de Abarrotes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>La mejor inversión que he hecho para mi negocio. El soporte es excelente y la plataforma es muy fácil de usar.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <!-- Imagen de perfil -->
+                        </div>
+                        <div class="author-info">
+                            <h4>María Fernanda López</h4>
+                            <p>Dueña de Boutique</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Desde que implementamos MicroGestión, hemos ahorrado horas de trabajo manual y reducido nuestros errores en un 90%.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <!-- Imagen de perfil -->
+                        </div>
+                        <div class="author-info">
+                            <h4>Andrés Ramírez</h4>
+                            <p>Gerente de Distribuidora</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>MicroGestión</h3>
+                    <p>El software de gestión diseñado específicamente para las necesidades de las microempresas en Cali y toda Colombia.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#features">Funcionalidades</a></li>
+                        <li><a href="#register">Registro</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                        <li><a href="#">Precios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Cali, Colombia</li>
+                        <li><i class="fas fa-phone"></i> +57 320 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@microgestion.com</li>
+                        <li><i class="fas fa-clock"></i> Lunes a Viernes: 8am - 6pm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MicroGestión. Todos los derechos reservados. | Versión 2.5.1</p>
+            </div>
+        </footer>
+
+        <!-- Modal de Inicio de Sesión -->
+        <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="login_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="configModalLabel">Iniciar Sesión</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formLogin">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12">
+                                    <label for="user"><b>Usuario</b></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Escribe el nombre" type="text" id="user" ng-model="user"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12">
+                                    <label for="nombre_persona_completo"><b>Contraseña</b></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Escriba la contraseña" type="password" id="password" ng-model="pass"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" ng-click="login()"><i class="fa-solid fa-floppy-disk"></i> Iniciar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <script src="js/main.js?v=6"></script>
-</body>
+        
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
 </html>
